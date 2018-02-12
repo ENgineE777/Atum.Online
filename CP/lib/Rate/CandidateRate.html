@@ -1,0 +1,34 @@
+<footer></footer>
+
+<div style="text-align:center; background-color: #202020;">
+    <div style="padding: 0px; width:1024px; height:40px; display: inline-block; text-align: left; line-height: 35px; font-size: 0;">
+      <div style="width:100px;height:40px;" class="select" #tablink (click)="GoBack()">Dashboard</div>
+    </div>
+  </div>
+
+<div style="text-align:center;">
+  <div style="width:1024px; display: inline-block;">
+    
+    <div style="height:40px">
+    </div>
+
+<div *ngIf="candidate != null" style="padding: 15px; background-color: #ffffff; text-align: left;">
+  <p>{{candidate.name}} details</p>
+  <div>
+    <label>Name: </label>{{candidate.name}}</div>
+  <div>
+  <div>
+    <label>Email: </label>{{candidate.email}}</div>
+  </div>
+  <div>
+    <label>name: </label>
+    <input type="number" min="0" max="100" [(ngModel)]="rating" placeholder="Rating">
+    <button (click)="RateCandidate()" class="btn btn-danger">Rate</button>
+  </div>
+  <div style="height:40px">
+  </div>
+  <button (click)="GoBack()" class="btn btn-danger">Back</button>
+</div>
+
+</div>
+</div>

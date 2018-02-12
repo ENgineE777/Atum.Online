@@ -1,0 +1,66 @@
+
+<div style="padding: 25px; background-color: #ffffff; width: 45%; display: inline-block; vertical-align: text-top;">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Priority</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+       <tbody>
+          <tr class="issue" *ngFor="let issue of issues" style="cursor: pointer;" [class.active]="issue == selectedIssue" (click)="SelectIssue(issue)">
+            <td>{{issue.id}}</td>
+            <td>{{issue.GetType()}}</td>
+            <td>{{issue.GetPriority()}}</td>
+            <td>{{issue.name}}</td>
+         </tr>
+       </tbody>
+     </table>
+</div>
+<div style="width: 10px; display: inline-block; vertical-align: text-top;">
+</div>
+<div style="padding: 25px; background-color: #ffffff; width: 53%; display: inline-block; vertical-align: text-top;">
+      <div issue *ngIf="selectedIssue != null">
+        <div>
+          <b>{{selectedIssue.id}} - {{selectedIssue.name}}</b>
+        </div>
+        <div style="height: 20px">
+        </div>
+        <div>
+          <div style="width: 100px; display: inline-block;">Type</div>
+          <input style="width: 500px; display: inline-block;" type="text" class="form-control" value={{selectedIssue.GetType()}} readonly/>
+        </div>
+        <div style="height: 20px">
+        </div>
+        <div>
+          <div style="width: 100px; display: inline-block;">Priority</div>
+          <input style="width: 500px; display: inline-block;" type="text" class="form-control" value={{selectedIssue.GetPriority()}} readonly/>
+        </div>
+        <div style="height: 20px">
+        </div>
+        <div>
+          <div style="width: 100px; display: inline-block;">Created</div>
+          <input style="width: 500px; display: inline-block;" type="text" class="form-control" value={{selectedIssue.date}} readonly/>
+        </div>
+        <div style="height: 20px">
+        </div>
+        <div>
+          <div style="width: 100px; display: inline-block;">RepoRate</div>
+          <input style="width: 500px; display: inline-block;" type="text" class="form-control" value={{selectedIssue.repoRate}} readonly/>
+        </div>
+        <div style="height: 20px">
+        </div>
+        <div>
+          <div style="width: 100px; display: inline-block;">Components</div>
+          <input style="width: 500px; display: inline-block;" type="text" class="form-control" value={{selectedIssue.component}} readonly/>
+        </div>
+        <div style="height: 20px">
+        </div>
+        <div>
+          <div style="width: 100px; display: inline-block;">Description</div>
+          <textarea style="width: 700px;" type="text" class="form-control" readonly>{{selectedIssue.desc}}</textarea>
+        </div>
+      </div>
+</div>

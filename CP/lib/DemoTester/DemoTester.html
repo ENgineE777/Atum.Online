@@ -1,0 +1,75 @@
+<div #sidenav class="sidenav" *ngIf="link_broken == 2 && test_finished == false">
+
+    <div style="height:70px; position: absolute; top: 0; width: 100%;">
+        <div style="height:67px; background: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('back2.jpg'); background-size: cover;  background-position: center center; line-height: 67px;">    
+        </div>
+        <div style="height:3px; background-color: #ef7c47">
+        </div>
+    </div>
+            
+    <div style="text-align: left; background-color: #202020;">
+        <a class="closebtn" (click)="CloseNav()">&times;</a>
+
+        <div style="padding: 0px; height:40px; display: inline-block; text-align: left; line-height: 40px; font-size: 0;">
+          <div style="width:100px;height:40px;" class="select" #tablink (click)="ShowTab(0)">Issues</div>
+          <div style="width:100px;height:40px;" class="select" #tablink (click)="ShowTab(1)">New Issue</div>
+          <div style="width:100px;height:40px;" class="select" #tablink (click)="ShowTab(2)">Checklist</div>
+          <div style="width:100px;height:40px;" class="select" #tablink (click)="ShowTab(3)">User reports</div>
+          <div style="width:100px;height:40px;" class="select" #tablink (click)="ShowTab(4)">Wiki</div>
+        </div>
+    </div>
+    
+    <div style="text-align: left; padding: 25px;">
+        <div #tab class="tabcontent">
+            <tester_issues></tester_issues>
+        </div>
+
+        <div #tab class="tabcontent">
+            <tester_new_issue></tester_new_issue>
+        </div>
+
+        <div #tab class="tabcontent">
+            <tester_checklist></tester_checklist>
+        </div>
+
+        <div #tab class="tabcontent">
+            <tester_user_reports></tester_user_reports>
+        </div>
+
+        <div #tab class="tabcontent">
+            <div style="background-color: #ffffff; padding: 25px;">
+                {{queryService.desc}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="height:70px; position: fixed; top: 0; width: 100%;">
+    <div style="height:67px; background: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('back2.jpg'); background-size: cover;  background-position: center center; line-height: 67px;">
+      <div style="font-size:30px;cursor:pointer; float: left;  width:33.33333%; text-align:left;" (click)="OpenNav()">
+      	<div style="color:white; display: inline-block; vertical-align: middle; line-height: 20px;">&#9776;</div>
+      </div>
+      <div style="color:white; float: left;  width:33.33333%; text-align:center;">
+        <img src="logo_tr.png" style="width:32px;height:32px; display: inline-block; vertical-align: middle;">
+        <div style="color:white; display: inline-block; vertical-align: middle; font-family: 'Helvetica';">
+          Atum.Online
+        </div>
+      </div>
+      <div style="float: left;  width:33.33333%; text-align:right;">
+      	<div style="color:white; padding-left: 10px;">Time Left : {{timeStr}}</div>
+      </div>
+    </div>
+    <div style="height:3px; background-color: #ef7c47">
+    </div>
+</div>
+
+<div *ngIf="link_broken == 2 && test_finished == false">
+    <test_su></test_su>
+</div>
+<div *ngIf="link_broken == 1">
+    <label_err>Link in invalid</label_err>
+</div>
+<div *ngIf="test_finished == true">
+    <label_err>Time of test is out</label_err>
+</div>

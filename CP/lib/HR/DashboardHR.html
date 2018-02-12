@@ -1,0 +1,33 @@
+
+<footer></footer>
+
+<div style="text-align:center; background-color: #202020;">
+  <div style="padding: 0px; width:1024px; height:40px; display: inline-block; text-align: left; line-height: 35px; font-size: 0;">
+	  <div style="width:100px;height:40px;" class="select" #tablink (click)="ShowTab(0)">Candidates</div>
+    <div style="width:100px;height:40px;" class="select" #tablink (click)="ShowTab(1)">Tests</div>
+    <div style="width:100px;height:40px;" class="select" #tablink (click)="ShowTab(2)">Acount</div>
+  </div>
+</div>
+
+<div style="text-align:center;">
+  <div style="width:1024px; display: inline-block;">
+    
+    <div style="height:40px">
+    </div>
+    <div #tab class="tabcontent">
+      <candidates-list></candidates-list>
+    </div>
+
+    <div #tab class="tabcontent">
+      <test-builder></test-builder>
+    </div>
+
+    <div #tab class="tabcontent">
+      <hr-account></hr-account>
+    </div>
+
+    <div style="height:50px;">
+    </div>
+
+  </div>
+</div>

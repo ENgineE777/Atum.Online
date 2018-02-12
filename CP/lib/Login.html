@@ -1,0 +1,20 @@
+<footer></footer>
+     
+<div style="background-color: #ffffff; padding:50px; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+  <div>
+    <div style="width:80px; display: inline-block; vertical-align: middle;">Email
+    </div>
+    <input [(ngModel)]="login" placeholder="Email" style="width:200px; display: inline-block; vertical-align: middle;" class="form-control"/>
+  </div>
+  <div style="height:15px;">
+  </div>
+  <div>
+    <div style="width:80px;display: inline-block; vertical-align: middle;">Password
+    </div>
+    <input type="password" [(ngModel)]="pass" placeholder="Password" style="width:200px; display: inline-block; vertical-align: middle;" class="form-control"/>
+  </div>
+  <div style="width: 100%; height:40px; display: table;">
+      <label_err *ngIf="failed_login == true" div style="vertical-align: middle; text-align: center; display: table-cell;">Login or password is invalid</label_err>
+  </div>
+  <button (click)="MakeLogin()" style="display: block; margin: auto; width: 40%;" type="button" class="btn btn-danger">Login</button>
+</div>

@@ -1,0 +1,60 @@
+<div style="padding: 15px; background-color: #ffffff; text-align: left;">
+    <table class="table" style="width: 1024px;">
+      <thead>
+        <tr>
+          <th>Add checked item</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td><input [(ngModel)]="item_name" placeholder="Name" class="form-control"></td>
+        </tr>
+        <tr>
+          <td>Desc</td>
+          <td><input [(ngModel)]="item_desc" placeholder="Description" class="form-control"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button style="width:150px;" (click)="AddChechediItem()" class="btn btn-danger">Add</button>
+    </div>
+</div>
+  
+  <div style="height:40px;">
+  </div>
+        
+
+  <div style="padding: 15px; background-color: #ffffff; text-align: left;">
+
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Desiption</th>
+              <th>Status</th>
+              <th>Current Status</th>
+            </tr>
+          </thead>
+         <tbody>
+            <tr class="issue" *ngFor="let checkeditem of checklist">
+              <td>{{checkeditem.name}}</td>
+              <td>{{checkeditem.desc}}</td>
+              <td>{{checkeditem.GetState()}}</td>
+              <td><select #state (change)="ChangeState(checkeditem)" style="visibility: hidden;" class="form-control">
+                  <option>Not set</option>
+                  <option>Passed</option>
+                  <option>Failed</option>
+                  <option>Invalid</option>
+                </select></td>
+           </tr>
+         </tbody>
+       </table>
+
+       <div style="height: 20px">
+        </div>
+
+    <button (click)="StartTest()" *ngIf="checkStarted == false" class="btn btn-danger">Start test by checklist</button>
+    <button (click)="SaveTest()" *ngIf="checkStarted == true" class="btn btn-danger">Save results of test</button>
+  </div>

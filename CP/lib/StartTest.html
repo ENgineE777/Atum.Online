@@ -1,0 +1,18 @@
+
+<footer></footer>
+
+<div style="background-color: #ffffff; padding:50px; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+  <div *ngIf="link_broken == 2">
+    <div>
+      <div style="width:80px;display: inline-block; vertical-align: middle;">Email</div>
+      <input [(ngModel)]="email" placeholder="Email" style="width:200px; display: inline-block; vertical-align: middle;" class="form-control">
+    </div>
+    <div style="width: 100%; height:40px; text-align: center;">
+      <label_err *ngIf="wrong_email == true">Email is wrong</label_err>
+    </div>
+    <button (click)="Proceed()" style="display: block; margin: auto; text-align: center;" class="btn btn-danger">Start Test</button>
+  </div>
+  <div *ngIf="link_broken == 1">
+    <label_err>Link in invalid</label_err>
+  </div>
+</div>

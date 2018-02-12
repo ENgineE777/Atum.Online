@@ -1,0 +1,62 @@
+
+<div style="background-color: #ffffff; padding: 25px;">
+  <div *ngIf="issue != null">
+    <div>
+      <div style="width: 100px; display: inline-block;">Subject</div>
+      <input style="width: 500px; display: inline-block;" type="text" class="form-control" [(ngModel)]="issue.name"/>
+    </div>
+    <div style="height: 20px">
+    </div>
+    <div>
+      <div style="width: 100px; display: inline-block;">Type</div>
+      <select style="width: 100px; display: inline-block;" class="form-control" #typeList (change)="ChangeType()">
+        <option>Task</option>
+        <option>Bug</option>
+        <option>Note</option>
+      </select>
+    </div>
+    <div style="height: 20px">
+    </div>
+    <div>
+      <div style="width: 100px; display: inline-block;">Priority</div>
+      <select style="width: 100px; display: inline-block;" class="form-control" #priorityList (change)="ChangePriority()">
+        <option>Critical</option>
+        <option>Major</option>
+        <option>Minor</option>
+        <option>Trivial</option>
+      </select>
+    </div>
+    <div style="height: 20px">
+    </div>
+    <div>
+        <div style="width: 100px; display: inline-block;">Repo rate</div>
+        <select style="width: 100px; display: inline-block;" class="form-control" #repoList (change)="ChangeRepoRate()">
+          <option>10%</option>
+          <option>20%</option>
+          <option>30%</option>
+          <option>40%</option>
+          <option>50%</option>
+          <option>60%</option>
+          <option>70%</option>
+          <option>80%</option>
+          <option>90%</option>
+          <option>100%</option>
+        </select>
+    </div>
+    <div style="height: 20px">
+    </div>
+    <div>
+        Components
+        <input style="width: 600px;" type="text" class="form-control" [(ngModel)]="issue.component"/>
+    </div>
+    <div style="height: 20px">
+    </div>
+    <div>
+      Description
+      <textarea class="form-control" type="text" [(ngModel)]="issue.desc"></textarea>
+    </div>
+    <div style="height: 20px">
+    </div>
+    <button (click)="AddIssue()" class="btn btn-danger">Create</button>
+  </div>
+</div>

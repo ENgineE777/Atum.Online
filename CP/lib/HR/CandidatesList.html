@@ -1,0 +1,57 @@
+<div style="padding: 15px; padding-left: 150px; padding-right: 150px; background-color: #ffffff; text-align: left;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Add candidate</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td><input [(ngModel)]="candidate_name" placeholder="Name" class="form-control"></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><input [(ngModel)]="candidate_email" placeholder="Email" class="form-control"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="text-align:center;">
+    <button style="width:150px;" (click)="AddCandidate()" class="btn btn-danger">Add</button>
+  </div>
+</div>
+
+<div style="height:40px;">
+</div>
+      
+<div style="padding: 15px; background-color: #ffffff; text-align: left;">
+  <table class="table">
+ 	  <thead>
+ 			<tr>
+   			<th>Name</th>
+        <th>Email</th>
+        <th>Test</th>
+   			<th>Link</th>
+        <th>Status</th>
+ 			</tr>
+ 	  </thead>
+    <tbody>
+ 	    <tr *ngFor="let candidate of candidates">
+   	    <td>{{candidate.name}}</td>
+        <td>{{candidate.email}}</td>
+        <td>Tester</td>
+        <td *ngIf="candidate.status < 2">
+            <p id="copylink" #linktext>https://atum.online/starttest/{{candidate.link}}</p>
+            <button #copylink data-clipboard-target = '#copylink' class="btn btn-danger">Copy</button>
+            <button (click)="StartTest(candidate)" class="btn btn-danger">Test</button>
+        </td>
+        <td *ngIf="candidate.status >= 2"></td>
+        <td *ngIf="candidate.status != 3">{{candidate.GetStatus()}}</td>
+        <td *ngIf="candidate.status == 3">
+          <button (click)="ViewCandidate(candidate)" class="btn btn-danger">View results</button>
+        </td>
+      </tr>
+		</tbody>
+  </table>
+</div>

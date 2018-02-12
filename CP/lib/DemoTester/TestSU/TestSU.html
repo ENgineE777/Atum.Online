@@ -1,0 +1,471 @@
+
+<div style="background-color: #5889ad; color: #ffffff; width: 100%; height: 100px;">
+    <span style="float:left; width: 50%;">
+            <img src="bestcourses.png">
+            <button *ngIf="page != 0" (click)="GoHome()" class="btn">Home</button>
+            <button *ngIf="page != 0" (click)="ViewCourses()" class="btn">Courses</button>
+            <button *ngIf="page != 0 && logged == true" (click)="MyCourses()" class="btn">My Courses</button>
+    </span>
+    <span style="float:left; width: 50%; text-align: right; line-height: 100px;">
+        <button *ngIf="logged == false" (click)="Login()" class="btn" style="margin-right: 10px;">Login</button>
+        <div *ngIf="logged == true" style="position: relative;display: inline-block; line-height: 25px; text-align: left; margin-right: 40px;">
+            <button (click)="DropMenu()" class="btn">Profile</button>
+            <div *ngIf="menu_dropped == true" style="position: absolute; background-color: #f9f9f9; min-width: 120px;">
+                <a style="display: block;" (click)="Go2LK()">LK</a>
+                <a style="display: block;" (click)="MyCourses()">My Courses</a>
+                <a style="display: block;" (click)="EditCourse()">Create Course</a>
+                <a style="display: block;" (click)="SignOut()">SignOut</a>
+            </div>
+        </div>
+    </span>
+</div>
+
+<div *ngIf="show_login == true">
+    <div class="blackout" style="width:100%; height:100%; position: absolute; left:0; top:0; z-index:10; background:rgba(0,0,0,.5);" ></div>
+
+    <div style="z-index:11; background-color: #ffffff; padding:5px; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+            <button (click)="CancelLogin()" style="float: right;" type="button" class="btn btn-danger">X</button>
+            <div style="padding: 50px">
+            <div style="height:15px;">
+            </div>
+            <div>
+              <div style="width:80px; display: inline-block; vertical-align: middle;">Email
+              </div>
+              <input [(ngModel)]="login" placeholder="Email" style="width:200px; display: inline-block; vertical-align: middle;" class="form-control"/>
+            </div>
+            <div style="height:15px;">
+            </div>
+            <div>
+              <div style="width:80px;display: inline-block; vertical-align: middle;">Password
+              </div>
+              <input type="password" [(ngModel)]="password" placeholder="Password" style="width:200px; display: inline-block; vertical-align: middle;" class="form-control"/>
+            </div>
+            <div style="width: 100%; height:40px; display: table;">
+                <label_err *ngIf="failed_login == true" div style="vertical-align: middle; text-align: center; display: table-cell;">Login or password is invalid</label_err>
+            </div>
+            <button (click)="MakeLogin()" style="display: block; margin: auto; width: 40%;" type="button" class="btn btn-danger">Login</button>
+            </div>
+          </div>
+
+</div>
+
+<div *ngIf="show_video == true">
+        <div class="blackout" style="width:100%; height:100%; position: absolute; left:0; top:0; z-index:10; background:rgba(0,0,0,.5);" ></div>
+    
+        <div style="z-index:11; background-color: #ffffff; padding:50px; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);">
+           <button (click)="StopViewCourse()" style="display: block; margin: auto; width: 40%;" type="button" class="btn btn-danger">Close Video</button>
+        </div>
+    
+    </div>
+
+<div *ngIf="page == 0">
+
+    <div style="width : 100%; height: 350px; padding: 25px; background: url('learning.png'); background-size: cover;  background-position: center center; text-align: center;">
+        <div style="padding-top: 110px;">
+            <div style="color:#ffffff; font-size: 30px; padding-bottom: 10px;">Courses from professionals</div>
+            <input [(ngModel)]="search" placeholder="Find your course" style="width:200px; display: inline-block; vertical-align: middle;" class="form-control"/>
+            <button (click)="Search()" class="btn btn-info">Search</button>
+        </div>
+    </div>
+
+    <div style="padding: 100px; width: 100%; background-color: #ffffff; vertical-align: text-top;">
+        <div style="text-align: center;color:#202020; font-size: 30px;">Hundreds best online courses</div>
+
+        <div style="text-align:center;">
+
+            <div style="height: 25px;">
+            </div>
+
+            <div style="text-align:center; width: 100%;" (click)="Go2LearnngCourse()">
+                <div style="width: 200px; height:200px; display: inline-block;">
+                    <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                    </div>
+                    <div>Super puper
+                    </div>
+                    <div>Bets author
+                    </div>
+                </div>
+
+                <div style="width: 200px; height:200px; display: inline-block;">
+                    <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                    </div>
+                    <div>Super puper
+                    </div>
+                    <div>Bets author
+                    </div>
+                </div>
+
+                <div style="width: 200px; height:200px; display: inline-block;">
+                    <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                    </div>
+                    <div>Super puper
+                    </div>
+                    <div>Bets author
+                    </div>
+                </div>
+
+                <div style="width: 200px; height:200px; display: inline-block;">
+                    <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                    </div>
+                    <div>Super puper
+                    </div>
+                    <div>Bets author
+                    </div>        
+                </div>
+            </div>
+
+            <div style="height: 15px;">
+            </div>
+
+            <div style="text-align:center;" (click)="Go2LearnngCourse()">
+                <div style="width: 200px; height:200px; display: inline-block;">
+                    <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                    </div>
+                    <div>Super puper
+                    </div>
+                    <div>Bets author
+                    </div>
+                </div>
+    
+                <div style="width: 200px; height:200px; display: inline-block;">
+                    <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                    </div>
+                    <div>Super puper
+                    </div>
+                    <div>Bets author
+                    </div>
+                </div>
+    
+                <div style="width: 200px; height:200px; display: inline-block;">
+                    <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                    </div>
+                    <div>Super puper
+                    </div>
+                    <div>Bets author
+                    </div>
+                </div>
+    
+                <div style="width: 200px; height:200px; display: inline-block;">
+                    <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                    </div>
+                    <div>Super puper
+                    </div>
+                    <div>Bets author
+                    </div>        
+                </div>
+            </div>
+
+            <button (click)="ViewCourses()" class="btn btn-info">View courses</button>
+        </div>
+    </div>
+    
+    <div style="padding: 25px; background-color: #ffffff; text-align:center;">
+
+        <div style="text-align: center;color:#202020; font-size: 30px;">Become a teacher</div>
+
+        <div style="height: 25px;">
+        </div>
+
+        <div>
+            <div style="width : 400px; display: inline-block;">
+                <div><b>Be teacher is greate</b></div>
+                <div style="height: 10px;">
+                </div>
+                <div style="text-align: left;">Создай свой курс один раз и зарабатывай долгие годы
+                    Вы создали десятки успешных веб-сайтов или приложений Apple?
+                    Лучше вас никто не переберет движок автомобиля? Вы профессиональный
+                    фотограф или инструктор по йоги? Вы всю жизнь посвятили уходу за детьми?
+                    Вашими десертами восхищаются ваши родные и друзья?</div>
+            </div>
+            <img src="learning.png" style="display: inline-block; width : 400px; height : 300px;">
+        </div>
+
+        <div style="height: 25px;">
+        </div>
+
+        <button (click)="BecomeTeacher()" class="btn btn-info">Learn more</button>
+
+        <div style="height: 100px;">
+        </div>
+    
+    </div>
+
+</div>
+
+<div *ngIf="page == 1">
+
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Name your course</span>
+            <button (click)="EditCourse()" class="btn btn-danger">Create</button>
+        </div>
+        
+        <div style="height: 25px;">
+    </div>
+
+    <div style="height: 25px;">
+    </div>
+
+    <div style="height: 25px;">
+            <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+                        Be a techer is cool
+            </div>    
+        </div>
+
+</div>
+
+<div *ngIf="page == 2">
+        
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Profile info (name, photo, etc)</span>
+    </div>
+                
+    <div style="height: 25px;">
+    </div>
+        
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Change password</span>
+    </div>
+</div>
+
+<div *ngIf="page == 3">
+        
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Courses</span>
+        <select style="width: 100px; display: inline-block;" class="form-control" #typeList (change)="ChangeType()">
+                <option>Learning</option>
+                <option>Teaching</option>
+        </select>
+
+    </div>
+                
+    <div style="height: 25px;">
+    </div>
+        
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Learning course</span>
+        <button (click)="LearnCourse()" class="btn btn-danger">View</button>
+    </div>
+
+    <div style="height: 25px;">
+    </div>
+
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Teaching course</span>
+        <button (click)="EditCourse()" class="btn btn-danger">View</button>
+    </div>
+
+</div>
+
+<div *ngIf="page == 4">
+        
+    <div style="height: 25px;">
+    </div>
+
+    <div style="padding: 25px; width : 100%; display: inline-block; vertical-align: text-top; text-align:center;">
+        <input [(ngModel)]="search" placeholder="Find your course" style="width:200px; display: inline-block; vertical-align: middle;" class="form-control"/>
+        <button class="btn btn-danger">Search</button>
+    </div>
+       
+    <div style="height: 25px;">
+    </div>
+        
+    <div style="text-align:center;">
+
+            <div style="background-color:#ffffff; width: 200px; height:200px; display: inline-block;">
+                    <div style="height:100px;"></div>
+                    <div>category1</div>
+                    <div>category2</div>
+                    <div>category3</div>
+            </div>
+
+            <div style="width: 200px; height:200px; display: inline-block;" (click)="Go2LearnngCourse()">
+                <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                </div>
+                <div>Super puper
+                </div>
+                <div>Bets author
+                </div>
+            </div>
+
+            <div style="width: 200px; height:200px; display: inline-block;" (click)="Go2LearnngCourse()">
+                <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                </div>
+                <div>Super puper
+                </div>
+                <div>Bets author
+                </div>
+            </div>
+
+            <div style="width: 200px; height:200px; display: inline-block;" (click)="Go2LearnngCourse()">
+                <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                </div>
+                <div>Super puper
+                </div>
+                <div>Bets author
+                </div>
+            </div>
+
+            <div style="width: 200px; height:200px; display: inline-block;" (click)="Go2LearnngCourse()">
+                <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                </div>
+                <div>Super puper
+                </div>
+                <div>Bets author
+                </div>        
+            </div>
+        </div>
+
+</div>
+
+<div *ngIf="page == 5">
+        
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Course title</span>
+    </div>
+       
+    <div style="height: 25px;">
+    </div>
+
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Description</span>
+        <button (click)="LearnCourse()" class="btn btn-danger">Start Listen</button>
+    </div>
+
+    <div style="height: 25px;">
+    </div>
+        
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>About author</span>
+        <button (click)="ShowAuthor()" class="btn btn-danger">View Author</button>
+    </div>
+    
+    <div style="height: 25px;">
+    </div>
+
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>List of content</span>
+    </div>
+
+</div>
+
+<div *ngIf="page == 6">
+        
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Corse title</span>
+    </div>
+       
+    <div style="height: 25px;">
+    </div>
+
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Description</span>
+    </div>
+
+    <div style="height: 25px;">
+    </div>
+        
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>About author</span>
+        <button (click)="ShowAuthor()" class="btn btn-danger">View Author</button>
+    </div>
+    
+    <div style="height: 25px;">
+    </div>
+
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>List of content</span>
+        <button (click)="ViewCourse()" class="btn btn-danger">View Course</button>
+    </div>
+
+</div>
+
+<div *ngIf="page == 7">
+        
+    <div style="text-align:center;">
+        <div style="width:1024px; display: inline-block;">
+
+        <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+            <img src="learning.png" style="display: inline-block; width : 100px; height : 100px;">
+            <div style="width : 400px; display: inline-block; text-align: left;">
+                <div>Author Name</div>
+                <div>title</div>
+                <div style="height: 10px;">
+                </div>
+                <div>About</div>
+                <div style="text-align: left;">Microsoft Certified Trainer (сертифици­рованный тренер Microsoft по продуктам MS Office, специализи­руюсь на корпоратив­ных тренингах по Excel). С 2010 г обучил более 2500 сотрудни­ков Компаний (МТС, МГТС, Miele, РЖД и др.). 
+                        Считаю, что обучение должно состоять из 90% практики!</div>
+            </div>
+        </div>
+        </div>
+    </div>
+       
+    <div style="height: 25px;">
+    </div>
+        
+    <div style="text-align:center;">
+            
+                        <div style="width: 200px; height:200px; display: inline-block;" (click)="Go2LearnngCourse()">
+                            <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                            </div>
+                            <div>Super puper
+                            </div>
+                            <div>Bets author
+                            </div>
+                        </div>
+            
+                        <div style="width: 200px; height:200px; display: inline-block;" (click)="Go2LearnngCourse()">
+                            <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                            </div>
+                            <div>Super puper
+                            </div>
+                            <div>Bets author
+                            </div>
+                        </div>
+            
+                        <div style="width: 200px; height:200px; display: inline-block;" (click)="Go2LearnngCourse()">
+                            <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                            </div>
+                            <div>Super puper
+                            </div>
+                            <div>Bets author
+                            </div>
+                        </div>
+            
+                        <div style="width: 200px; height:200px; display: inline-block;" (click)="Go2LearnngCourse()">
+                            <div style="height:100px; background: url('learning.png'); background-size: cover;background-position: center center;">
+                            </div>
+                            <div>Super puper
+                            </div>
+                            <div>Bets author
+                            </div>        
+                        </div>
+                    </div>
+
+</div>
+
+<div *ngIf="page == 8">
+        
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Course name</span>
+    </div>
+       
+    <div style="height: 25px;">
+    </div>
+
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Course desc</span>
+    </div>
+
+    <div style="height: 25px;">
+    </div>
+        
+    <div style="padding: 25px; background-color: #ffffff; display: inline-block; vertical-align: text-top;">
+        <span>Course List</span>
+        <button class="btn btn-info">Save course</button>
+    </div>
+
+</div>
+
+<div style="padding: 25px; width: 100%; background-color: #5889ad; display: inline-block; vertical-align: text-top; color:#ffffff">
+        All right reserved   About Contact   Social: Fb, Inst, Youtube
+</div>

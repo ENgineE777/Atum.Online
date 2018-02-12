@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="clipboard.min.js"></script>
+    <script>
+      // WARNING: DO NOT set the <base href> like this in production!
+      // Details: https://webdev.dartlang.org/angular/guide/router
+      (function () {
+        // App being served out of web folder (like WebStorm does)?
+        var match = document.location.pathname.match(/^\/[-\w]+\/web\//);
+        var href = match ? match[0] : '/';
+        document.write('<base href="' + href + '" />');
+      }());
+    </script>
+    <!--<base href="/cp/">-->
+
+    <title>Atum.Online</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <script defer src="main.dart" type="application/dart"></script>
+    <script defer src="packages/browser/dart.js"></script>
+  </head>
+  <body style="padding:0; margin:0; padding-top: 70px; padding-bottom: 50px; background-color: #f2f2f2;">
+      <app><div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </app>
+    <script>
+      var clip = new Clipboard('.btn');
+      clip.on('success', function(e) {});
+    </script>
+  </body>
+</html>
